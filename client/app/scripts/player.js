@@ -8,8 +8,9 @@ window.Player = (function() {
 	var SPEED = 30; // * 10 pixels per second
 	var WIDTH = 5;
 	var HEIGHT = 5;
-	var INITIAL_POSITION_X = 30;
-	var INITIAL_POSITION_Y = 25;
+	var INITIAL_POSITION_X = 10;
+	var INITIAL_POSITION_Y = 20;
+	var incSpeed = 0.02;
 
 	var Player = function(el, game) {
 		this.el = el;
@@ -26,7 +27,7 @@ window.Player = (function() {
 	};
 
 	Player.prototype.onFrame = function(delta) {
-		if (Controls.keys.right) {
+	/*	if (Controls.keys.right) {
 			this.pos.x += delta * SPEED;
 		}
 		if (Controls.keys.left) {
@@ -34,10 +35,15 @@ window.Player = (function() {
 		}
 		if (Controls.keys.down) {
 			this.pos.y += delta * SPEED;
+		}*/
+
+		incSpeed += 0.02;						//Increases falling speed with each passed frame
+		if (Controls.keys.up || Controls.keys.space) {					
+			this.pos.y -= delta * SPEED;		//Moves player up if pressing key up
+			incSpeed = 0;
 		}
-		if (Controls.keys.up) {
-			this.pos.y -= delta * SPEED;
-		}
+		else									
+			this.pos.y += delta * SPEED * incSpeed;		//Moves player down if key up is not pressed
 
 		this.checkCollisionWithBounds();
 
