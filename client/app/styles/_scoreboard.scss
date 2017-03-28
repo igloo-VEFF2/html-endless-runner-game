@@ -26,10 +26,20 @@
 	transform: none;
 }
 
-.Scoreboard-restart {
-	margin-top: em(225px);
+.Scoreboard-score {
+	margin-top: em(15px);
 
-	//font-size: inherit;
+	font-size: em(30px);
+	font-weight: bold;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
+	color: white;
+	-webkit-text-stroke: em(0.5px) black;
+
+}
+
+.Scoreboard-restart {
+	margin-top: em(150px);
+
 	font-size: inherit;
 	padding: em(4px) em(15px);
 	border: em(2px) solid black;
