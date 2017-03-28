@@ -6,10 +6,14 @@ window.Game = (function() {
 	 * Main game class.
 	 * @param {Element} el jQuery element containing the game.
 	 * @constructor
+	 * 
 	 */
+
 	var Game = function(el) {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
+		this.pipes = new window.Pipes(this.el.find('.Pipes'), this);
+		
 		this.isPlaying = false;
 
 		// Cache a bound onFrame since we need it each frame.
@@ -33,6 +37,7 @@ window.Game = (function() {
 
 		// Update game entities.
 		this.player.onFrame(delta);
+		this.pipes.onFrame(delta);
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
@@ -55,6 +60,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.reset = function() {
 		this.player.reset();
+		this.pipes.reset();
 	};
 
 	/**
