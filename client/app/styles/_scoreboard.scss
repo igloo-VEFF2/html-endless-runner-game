@@ -4,11 +4,14 @@
 	left: 50%;
 	top: em(100px);
 	height: em(300px);
-	width: em(400px);
+	width: em(200px);
 	margin-left: em(-200px);
 	box-sizing: border-box;
+	border-radius: em(20px);
+	border-color: black;
+	border: em(2px) solid;
 
-	background: purple;
+	background: orange;
 	text-align: center;
 
 	// Keep it off-screen
@@ -24,11 +27,13 @@
 }
 
 .Scoreboard-restart {
-	margin-top: em(200px);
+	margin-top: em(225px);
 
+	//font-size: inherit;
 	font-size: inherit;
 	padding: em(4px) em(15px);
-	border: em(2px) solid white;
+	border: em(2px) solid black;
+	border-radius: em(3px);
 	background: none;
 	cursor: pointer;
 }
@@ -38,4 +43,5 @@
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: em(24px);
 	color: white;
+	-webkit-text-stroke: em(0.5px) black;
 }
