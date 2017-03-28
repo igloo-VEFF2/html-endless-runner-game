@@ -10,7 +10,7 @@ window.Player = (function() {
 	var HEIGHT = 5;
 	var INITIAL_POSITION_X = 10;
 	var INITIAL_POSITION_Y = 20;
-	var incSpeed = 0.02;
+	var fallSpeed = 0.02;
 
 	var Player = function(el, game) {
 		this.el = el;
@@ -27,23 +27,16 @@ window.Player = (function() {
 	};
 
 	Player.prototype.onFrame = function(delta) {
-	/*	if (Controls.keys.right) {
-			this.pos.x += delta * SPEED;
-		}
-		if (Controls.keys.left) {
-			this.pos.x -= delta * SPEED;
-		}
-		if (Controls.keys.down) {
-			this.pos.y += delta * SPEED;
-		}*/
 
-		incSpeed += 0.02;						//Increases falling speed with each passed frame
+		fallSpeed += 0.02;									//Increases falling speed with each passed frame
+
+
 		if (Controls.keys.up || Controls.keys.space) {					
-			this.pos.y -= delta * SPEED;		//Moves player up if pressing key up
-			incSpeed = 0;
+			this.pos.y -= delta * SPEED;					//Moves player up if pressing key up
+			fallSpeed = 0;
 		}
 		else									
-			this.pos.y += delta * SPEED * incSpeed;		//Moves player down if key up is not pressed
+			this.pos.y += delta * SPEED * fallSpeed;		//Moves player down if key up is not pressed
 
 		this.checkCollisionWithBounds();
 
@@ -56,6 +49,7 @@ window.Player = (function() {
 			this.pos.x + WIDTH > this.game.WORLD_WIDTH ||
 			this.pos.y < 0 ||
 			this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
+			fallSpeed = 0.02;
 			return this.game.gameover();
 		}
 	};
