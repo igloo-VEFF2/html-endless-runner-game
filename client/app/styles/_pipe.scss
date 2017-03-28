@@ -1,5 +1,5 @@
 
-.Player {
+.Pipes {
     // Absolutely position entities at 0,0 and use transform to
     // move it around.
     position: absolute;
@@ -7,5 +7,6 @@
     left: 0;
     width: em(50px);
     height: em(50px);
+
 
 }
