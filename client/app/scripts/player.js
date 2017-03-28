@@ -30,10 +30,11 @@ window.Player = (function() {
 
 		fallSpeed += 0.02;									//Increases falling speed with each passed frame
 
-
-		if (Controls.keys.up || Controls.keys.space) {					
-			this.pos.y -= delta * SPEED;					//Moves player up if pressing key up
+		if(Controls._didJump)
+		{
+			this.pos.y -= delta * SPEED * 6.5;				//Player jumps if space was pressed or LMB clicked
 			fallSpeed = 0;
+			Controls._didJump = false;
 		}
 		else									
 			this.pos.y += delta * SPEED * fallSpeed;		//Moves player down if key up is not pressed
