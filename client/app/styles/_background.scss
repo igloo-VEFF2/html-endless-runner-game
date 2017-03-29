@@ -1,0 +1,10 @@
+.Background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: em(448px);
+    width: em(1536px);
+
+    background: orangered url(../assets/background.png) repeat-x;
+    background-size: contain;
+}
