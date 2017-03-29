@@ -18,6 +18,7 @@ window.Player = (function() {
 		this.el = el;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
+		this.score = 0;
 	};
 
 	/**
@@ -26,6 +27,7 @@ window.Player = (function() {
 	Player.prototype.reset = function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
+		this.score = 0;
 	};
 
 	Player.prototype.onFrame = function(delta) {
@@ -39,13 +41,12 @@ window.Player = (function() {
 			Controls._didJump = false;
 		}
 		else									
-			this.pos.y += delta * SPEED * fallSpeed;		//Moves player down if key up is not pressed
+			this.pos.y += delta * SPEED * fallSpeed;				//Moves player down if key up is not pressed
 
-		this.checkCollisionWithBounds();
-		this.checkCollisionWithPipes();
-
-		console.log(this.game.pipeTop.height);
-		console.log(this.game.pipeTop.width);
+		this.checkCollisionWithBounds();							//Checks collisions with boundaries
+		this.checkCollisionWithPipes();								//Checks collisions with pipes
+		this.checkCollisionWithGap();								//Checks if bird passes between pipes
+		document.querySelector('.Score').innerHTML = this.score;	//Updates the score in html
 
 		// Update UI
 		this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
@@ -70,9 +71,19 @@ window.Player = (function() {
 	 if (this.game.pipeBottom.pos.x < this.pos.x + this.width &&
         this.game.pipeBottom.pos.x + this.game.pipeBottom.width > this.width &&
         this.game.pipeBottom.pos.y < this.pos.y + this.height &&
-        this.game.pipeBottom.height + this.game.pipeBottom.pos.y > this.pos.y)
+       	 this.game.pipeBottom.height + this.game.pipeBottom.pos.y > this.pos.y)
 			 return this.game.gameover();
 	};
+
+	Player.prototype.checkCollisionWithGap = function() {
+		if (this.game.pipeTop.gap.pos.x < this.pos.x + this.width &&
+        	this.game.pipeTop.gap.pos.x + 200 > this.width &&
+        	this.game.pipeTop.gap.pos.y < this.pos.y + this.height &&
+        	600 + this.game.pipeTop.gap.pos.y > this.pos.y)
+			if(this.game.pipeTop.gapTouched === false) {
+				this.score++;
+				this.game.pipeTop.gapTouched = true;}
+	}
 
 	return Player;
 
