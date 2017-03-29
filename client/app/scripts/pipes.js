@@ -5,9 +5,10 @@ window.Pipes = (function() {
 	// for 1024x576px canvas.
 	var SPEED = 30; // * 10 pixels per second
 	var WIDTH = 21.5;
-	var HEIGHT = 57.6;
+	var HEIGHT = 40;
 	var INITIAL_POSITION_X = 100;
-	var INITIAL_POSITION_Y = -5;
+	var INITIAL_POSITION_Y = Math.floor((Math.random() *(0 - -30)) - 30);		//Randomly generates the y of a pipe
+//	var INITIAL_POSITION_Y = -30;
 
 	var Pipes = function(el, game) {
 		this.width = WIDTH;
@@ -19,12 +20,13 @@ window.Pipes = (function() {
 
 	Pipes.prototype.reset = function() {
 		this.pos.x = INITIAL_POSITION_X;
-		this.pos.y = INITIAL_POSITION_Y;
+		this.pos.y  = Math.floor((Math.random() * (0 - -30)) - 30);				//Randomly generates the y of a pipe
+		
 	};
 
 	Pipes.prototype.onFrame = function(delta) {
-
-		this.pos.x -= delta * SPEED;		
+		this.game.pipeBottom.pos.y = this.pos.y + 26;							//Sets the gap between top and bottom pipe
+		this.pos.x -= delta * SPEED;											//Sets the movement of the pipes
 		
 		this.checkIfOutOfBounds();
 
@@ -34,7 +36,10 @@ window.Pipes = (function() {
 
 	Pipes.prototype.checkIfOutOfBounds = function() {
 		if (this.pos.x < -30)
-			this.pos.x = 100;
+		{
+			this.pos.x = 100;													//If the pipes go out of screen, move to right
+			this.pos.y  = Math.floor((Math.random() *(0 - -30)) - 30);			//Generates the y coordinate of the pipes
+		}
 	};
 
 	return Pipes;

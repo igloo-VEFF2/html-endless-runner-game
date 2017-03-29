@@ -12,7 +12,8 @@ window.Game = (function() {
 	var Game = function(el) {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
-		this.pipes = new window.Pipes(this.el.find('.Pipes'), this);
+		this.pipeTop = new window.Pipes(this.el.find('.PipeTop'), this);
+		this.pipeBottom = new window.Pipes(this.el.find('.PipeBottom'), this);
 
 		this.isPlaying = false;
 
@@ -37,7 +38,8 @@ window.Game = (function() {
 
 		// Update game entities.
 		this.player.onFrame(delta);
-		this.pipes.onFrame(delta);
+		this.pipeTop.onFrame(delta);
+		this.pipeBottom.onFrame(delta);
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
@@ -60,7 +62,8 @@ window.Game = (function() {
 	 */
 	Game.prototype.reset = function() {
 		this.player.reset();
-		this.pipes.reset();
+		this.pipeTop.reset();
+		this.pipeBottom.reset();
 	};
 
 	/**

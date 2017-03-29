@@ -43,10 +43,9 @@ window.Player = (function() {
 
 		this.checkCollisionWithBounds();
 		this.checkCollisionWithPipes();
-		console.log("PipeWidth: " + this.game.pipes.width*10);
-		console.log("PlayerX: " + this.width*10);
 
-
+		console.log(this.game.pipeTop.height);
+		console.log(this.game.pipeTop.width);
 
 		// Update UI
 		this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
@@ -60,19 +59,19 @@ window.Player = (function() {
 		}
 	};
 
-/*	Player.prototype.checkCollisionWithPipes = function() {
-		if (this.pos.y === this.game.pipes.pos.y)
-			return this.game.gameover();
-	
-	};*/
 
 	Player.prototype.checkCollisionWithPipes = function() {
-    if (this.game.pipes.pos.x < this.pos.x + this.width &&
-        this.game.pipes.pos.x + this.game.pipes.width > this.width &&
-        this.game.pipes.pos.y < this.pos.y + this.height &&
-        this.game.pipes.height + this.game.pipes.pos.y > this.pos.y)
+    if (this.game.pipeTop.pos.x < this.pos.x + this.width &&
+        this.game.pipeTop.pos.x + this.game.pipeTop.width > this.width &&
+        this.game.pipeTop.pos.y < this.pos.y + this.height &&
+        this.game.pipeTop.height + this.game.pipeTop.pos.y > this.pos.y)
 			 return this.game.gameover();
-	
+
+	 if (this.game.pipeBottom.pos.x < this.pos.x + this.width &&
+        this.game.pipeBottom.pos.x + this.game.pipeBottom.width > this.width &&
+        this.game.pipeBottom.pos.y < this.pos.y + this.height &&
+        this.game.pipeBottom.height + this.game.pipeBottom.pos.y > this.pos.y)
+			 return this.game.gameover();
 	};
 
 	return Player;

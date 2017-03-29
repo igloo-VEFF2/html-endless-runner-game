@@ -20,15 +20,6 @@
 	-webkit-transition: -webkit-transform 0.5s;
 }
 
-.Pipes {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 5em;
-    height: 5em;
-	
-}
-
 /**
 * Reset transform to animate it into the correct spot on the screen.
 */
