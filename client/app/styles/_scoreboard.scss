@@ -2,16 +2,16 @@
 .Scoreboard {
 	position: absolute;
 	left: 50%;
-	top: em(100px);
-	height: em(300px);
-	width: em(200px);
-	margin-left: em(-100px);
+	top: 50%;//em(100px);
+	height: em(50px);
+	width: em(145px);
+	margin-left: em(-75px);
 	box-sizing: border-box;
-	border-radius: em(20px);
+	border-radius: em(15px);
 	border-color: black;
 	border: em(2px) solid;
 
-	background: orange;
+	background: white;
 	text-align: center;
 
 	// Keep it off-screen
@@ -26,7 +26,7 @@
 	transform: none;
 }
 
-.Scoreboard-score {
+/*.Scoreboard-score {
 	margin-top: em(15px);
 
 	font-size: em(30px);
@@ -35,16 +35,17 @@
 	color: white;
 	-webkit-text-stroke: em(0.5px) black;
 
-}
+}*/
 
 .Scoreboard-restart {
-	margin-top: em(150px);
+	margin-top: em(2px);
 
 	font-size: inherit;
 	padding: em(4px) em(15px);
 	border: em(2px) solid black;
-	border-radius: em(3px);
-	background: none;
+	border-radius: em(12px);
+	background: orange; //url("../assets/restart.png") no-repeat;
+	background-size: cover;
 	cursor: pointer;
 }
 
@@ -52,6 +53,21 @@
 	// NOTICE: You'll lose 10% of your score if you don't change this style!
 	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	font-size: em(25px);
+	font-weight: bold;
+	color: white;
+	-webkit-text-stroke: em(0.7px) black;
+}
+
+.Score {
+	position: absolute;
+	left: 50%;
+	top: 0;	
+	margin-top: em(10px);
+	margin-left: em(-3.5px);
+
+	font-size: em(50px);
+	font-weight: bold;
+	font-family: Verdana, Geneva, Tahoma, sans-serif;
 	color: white;
 	-webkit-text-stroke: em(0.5px) black;
-}
+} 
