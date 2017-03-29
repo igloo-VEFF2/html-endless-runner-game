@@ -13,6 +13,8 @@ window.Player = (function() {
 	var fallSpeed = 0.02;
 
 	var Player = function(el, game) {
+		this.width = WIDTH;
+		this.height = HEIGHT;
 		this.el = el;
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
@@ -40,6 +42,11 @@ window.Player = (function() {
 			this.pos.y += delta * SPEED * fallSpeed;		//Moves player down if key up is not pressed
 
 		this.checkCollisionWithBounds();
+		this.checkCollisionWithPipes();
+		console.log("PipeWidth: " + this.game.pipes.width*10);
+		console.log("PlayerX: " + this.width*10);
+
+
 
 		// Update UI
 		this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
@@ -51,6 +58,21 @@ window.Player = (function() {
 			fallSpeed = 0.02;
 			return this.game.gameover();
 		}
+	};
+
+/*	Player.prototype.checkCollisionWithPipes = function() {
+		if (this.pos.y === this.game.pipes.pos.y)
+			return this.game.gameover();
+	
+	};*/
+
+	Player.prototype.checkCollisionWithPipes = function() {
+    if (this.game.pipes.pos.x < this.pos.x + this.width &&
+        this.game.pipes.pos.x + this.game.pipes.width > this.width &&
+        this.game.pipes.pos.y < this.pos.y + this.height &&
+        this.game.pipes.height + this.game.pipes.pos.y > this.pos.y)
+			 return this.game.gameover();
+	
 	};
 
 	return Player;
