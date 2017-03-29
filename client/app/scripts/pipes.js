@@ -7,7 +7,7 @@ window.Pipes = (function() {
 	var WIDTH = 21.5;
 	var HEIGHT = 57.6;
 	var INITIAL_POSITION_X = 100;
-	var INITIAL_POSITION_Y = 0;
+	var INITIAL_POSITION_Y = -5;
 
 	var Pipes = function(el, game) {
 		this.width = WIDTH;
@@ -38,5 +38,4 @@ window.Pipes = (function() {
 	};
 
 	return Pipes;
-
 })();
