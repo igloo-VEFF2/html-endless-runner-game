@@ -16,14 +16,14 @@ window.Pipes = (function() {
 		this.game = game;
 		this.pos = { x: 0, y: 0 };
 		this.gap = this.game.el.find('.Gap'), this;
-		this.gap.pos = { x: this.pos.x+2, y: 0};
+		this.gap.pos = { x: this.pos.x+5, y: 0};
 		this.gapTouched = false;												//Used for checking if bird passed between pipes
 	};
 
 	Pipes.prototype.reset = function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y  = Math.floor((Math.random() * (-8 - -30)) - 30);				//Randomly generates the y of a pipe
-		this.gap.pos = { x: this.pos.x+2, y: 0};
+		this.gap.pos = { x: this.pos.x+5, y: 0};
 		this.gapTouched = false;
 	};
 
@@ -45,7 +45,7 @@ window.Pipes = (function() {
 		{
 			this.pos.x = INITIAL_POSITION_X;									//If the pipes go out of screen, move to right
 			this.pos.y  = Math.floor((Math.random() *(-8 - -30)) - 30);			//Generates the y coordinate of the pipes
-			this.gap.pos.x = INITIAL_POSITION_X;
+			this.gap.pos.x = INITIAL_POSITION_X+5;
 			this.gapTouched = false;
 		}
 	};

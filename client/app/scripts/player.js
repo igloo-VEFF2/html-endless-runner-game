@@ -28,6 +28,7 @@ window.Player = (function() {
 		this.pos.x = INITIAL_POSITION_X;
 		this.pos.y = INITIAL_POSITION_Y;
 		this.score = 0;
+		Controls._didJump = false;
 	};
 
 	Player.prototype.onFrame = function(delta) {
@@ -38,7 +39,8 @@ window.Player = (function() {
 		{
 			this.pos.y -= delta * SPEED * 6.5;				//Player jumps if space was pressed or LMB clicked
 			fallSpeed = 0;
-			Controls._didJump = false;
+			this.game.playSound("flap");
+			Controls._didJump = false;						//Checks if bird jumped
 		}
 		else									
 			this.pos.y += delta * SPEED * fallSpeed;				//Moves player down if key up is not pressed
@@ -82,6 +84,7 @@ window.Player = (function() {
         	600 + this.game.pipeTop.gap.pos.y > this.pos.y)
 			if(this.game.pipeTop.gapTouched === false) {
 				this.score++;
+				this.game.playSound("score");
 				this.game.pipeTop.gapTouched = true;}
 	}
 

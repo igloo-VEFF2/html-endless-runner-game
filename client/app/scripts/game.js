@@ -8,6 +8,9 @@ window.Game = (function() {
 	 * @constructor
 	 * 
 	 */
+	var flapSound = new sound("../assets/flapSound.mp3");
+	var scoreSound = new sound("../assets/scoreSound.mp3");
+	var deathSound = new sound("../assets/deathSound.mp3");
 
 	var Game = function(el) {
 		this.el = el;
@@ -71,6 +74,7 @@ window.Game = (function() {
 	 */
 	Game.prototype.gameover = function() {
 		this.isPlaying = false;
+		this.playSound("death");
 
 		// Should be refactored into a Scoreboard class.
 		var that = this;
@@ -83,6 +87,31 @@ window.Game = (function() {
 					that.start();
 				});
 	};
+
+	Game.prototype.playSound = function(src) {
+		if(src === "flap")
+			flapSound.play();
+		if(src === "score")
+			scoreSound.play();
+		if(src === "death")
+			deathSound.play();
+	};
+
+	function sound(src) {
+		this.sound = document.createElement("audio");
+		this.sound.src = src;
+		this.sound.setAttribute("preload", "auto");
+		this.sound.setAttribute("controls", "none");
+		this.sound.style.display = "none";
+		document.body.appendChild(this.sound);
+		this.play = function(){
+			this.sound.play();
+
+		}
+		this.stop = function(){
+			this.sound.pause();
+    }
+}
 
 	/**
 	 * Some shared constants.
