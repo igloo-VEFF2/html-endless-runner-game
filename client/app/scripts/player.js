@@ -53,8 +53,8 @@ window.Player = (function() {
 	};
 
 	Player.prototype.checkCollisionWithBounds = function() {
-		if (this.pos.y < 0 ||
-			this.pos.y + HEIGHT > this.game.WORLD_HEIGHT) {
+		if (this.pos.y < 0||										//Checks if bird touch the top of the window
+			this.pos.y + HEIGHT > this.game.WORLD_HEIGHT-9) {		//Checks if bird touched the ground
 			fallSpeed = 0.02;
 			return this.game.gameover();
 		}
