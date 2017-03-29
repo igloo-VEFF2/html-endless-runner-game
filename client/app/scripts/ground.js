@@ -8,14 +8,15 @@ window.Ground = (function() {
     var Ground = function(el, game) {
         this.el = el;
         this.game = game;
+        this.pos.x = 0;
     };
 
     Ground.prototype.reset = function() {
-
+        this.pos.x = 0;
     };
 
     Ground.prototype.onFrame = function(delta) {
-        this.el.css('transform', 'translateX('+ this.WIDTH +'em)');
+        this.el.css('transform', 'translateX('+ -this.WIDTH +'em)');
     };
 
     return Ground;
