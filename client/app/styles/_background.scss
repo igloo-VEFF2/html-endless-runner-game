@@ -4,13 +4,16 @@
     left: 0;
     height: em(476px);
     width: em(1536px);
-
-    background: orangered url(../assets/background.png) repeat-x;
-    background-size: contain;
 }
 
 .Background-hills {
     position: absolute;
+    top: 0;
+    left: 0;
+    height: em(476px);
+    width: em(1536px);
+    background: orangered url(../assets/background.png) repeat-x;
+    background-size: contain;
 }
 
 .Background-mountains {
