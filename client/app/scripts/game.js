@@ -22,15 +22,21 @@ window.Game = (function() {
 		this.isPlaying = false;
 		this.muteImg = this.el.find('.Mute');
 
+		this.playSound("music");
+
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
 	};
 
 	document.getElementById("Mute").onclick = function(e) {
-		if(isMuted)
+		if(isMuted) {
 			document.getElementById("Mute").style.background = "url('../assets/soundOn.png') no-repeat";
-		else
+			//playSound("music");
+		}
+		else {
 			document.getElementById("Mute").style.background = "url('../assets/soundOff.png') no-repeat";
+			music.stop();
+		}
 		document.getElementById("Mute").style.backgroundSize = "50px 50px";
 		isMuted = !isMuted;
 	}
@@ -109,7 +115,8 @@ window.Game = (function() {
 				scoreSound.play();
 			if(src === "death")
 				deathSound.play();
-			music.play();
+			if(src === "music")
+				music.play();
 		}
 	};
 
