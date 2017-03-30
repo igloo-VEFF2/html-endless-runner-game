@@ -9,7 +9,7 @@ window.Ground = (function() {
     var Ground = function(el, game) {
         this.el = el;
         this.game = game;
-        this.pos = { x: 0, y: 0 };
+        this.posX = 0;
     };
 
     Ground.prototype.reset = function() {
