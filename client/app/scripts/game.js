@@ -11,6 +11,7 @@ window.Game = (function() {
 	var flapSound = new sound("../assets/flapSound.mp3");
 	var scoreSound = new sound("../assets/scoreSound.mp3");
 	var deathSound = new sound("../assets/deathSound.mp3");
+	var music = new sound('../assets/bensound-jazzcomedy.mp3');
 	var isMuted = false;
 
 	var Game = function(el) {
@@ -108,6 +109,7 @@ window.Game = (function() {
 				scoreSound.play();
 			if(src === "death")
 				deathSound.play();
+			music.play();
 		}
 	};
 
