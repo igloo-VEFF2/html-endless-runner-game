@@ -4,6 +4,7 @@
     left: 0;
     height: em(476px);
     width: em(1536px);
+    background: orangered;
 }
 
 .Background-hills {
@@ -12,10 +13,42 @@
     left: 0;
     height: em(476px);
     width: em(1536px);
-    background: orangered url(../assets/background.png) repeat-x;
+    //background: orangered url(../assets/background.png) repeat-x;
+    //background: url(../assets/background-hills.png);
+    background: url(../assets/hills-background-2.png);
     background-size: contain;
+
+    //animation: movehills 5s linear infinite;
+    //-webkit-animation: movehills 5s linear infinite;
+
+     @keyframes movehills {
+        from {
+            left: 0;
+        }
+        to {
+            left: em(-512px);
+        }
+    }
 }
 
 .Background-mountains {
     position: absolute;
+    top: 0;
+    left: 0;
+    height: em(476px);
+    width: em(1536px);
+    background: url(../assets/mountains-back.png);
+    background-size: contain;
+
+    //animation: movemountains 20s linear infinite;
+    //-webkit-animation: movemountains 20s linear infinite;
+
+    @keyframes movemountains {
+        from {
+            left: 0;
+        }
+        to {
+            left: em(-256px);
+        }
+    }
 }

@@ -20,10 +20,9 @@ window.Game = (function() {
 		this.pipeTop = new window.Pipes(this.el.find('.PipeTop'), this);
 		this.pipeBottom = new window.Pipes(this.el.find('.PipeBottom'), this);
 		this.ground = new window.Ground(this.el.find('.Ground'), this);
+		this.background = new window.Background(this.el.find('.Background'), this);
 		this.isPlaying = false;
 		this.muteImg = this.el.find('.Mute');
-
-		this.playSound("music");
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
@@ -50,6 +49,7 @@ window.Game = (function() {
 		// Check if the game loop should stop.
 		if (!this.isPlaying) {
 			this.ground.stopMove();
+			this.background.stopMovement();
 			return;
 		}
 
@@ -63,6 +63,8 @@ window.Game = (function() {
 		this.pipeTop.onFrame(delta);
 		this.pipeBottom.onFrame(delta);
 		this.ground.onFrame(delta);
+
+		this.background.startMovement();
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
@@ -78,6 +80,8 @@ window.Game = (function() {
 		this.lastFrame = +new Date() / 1000;
 		window.requestAnimationFrame(this.onFrame);
 		this.isPlaying = true;
+
+		this.playSound("music");
 	};
 
 	/**
@@ -88,6 +92,7 @@ window.Game = (function() {
 		this.pipeTop.reset();
 		this.pipeBottom.reset();
 		this.ground.reset();
+		this.background.reset();
 	};
 
 	/**
