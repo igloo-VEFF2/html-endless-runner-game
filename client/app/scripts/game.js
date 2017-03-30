@@ -49,6 +49,7 @@ window.Game = (function() {
 	Game.prototype.onFrame = function() {
 		// Check if the game loop should stop.
 		if (!this.isPlaying) {
+			this.ground.stopMove();
 			return;
 		}
 

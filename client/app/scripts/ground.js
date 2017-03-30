@@ -25,12 +25,17 @@ window.Ground = (function() {
         this.reset();
     }
 
+    Ground.prototype.stopMove = function() {
+        document.getElementById("Ground").style.animation = "none";
+    }
+
     Ground.prototype.onFrame = function(delta) {
         //console.log(delta);
 
         //this.el.css('animation', 'groundmove, '+ delta +'s, linear, infinite');
         //this.el.style.animation = "groundmove " + delta + "s linear infinite";
         //document.getElementById("Ground").style.animation = "groundmove "+delta*10+"s linear infinite";
+        document.getElementById("Ground").style.animation = "groundmove 0.12s linear infinite";
         /*if(moved) {
             this.el.css('transform', 'none');
             moved = false;
