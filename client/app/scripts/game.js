@@ -85,8 +85,8 @@ window.Game = (function() {
 	Game.prototype.gameover = function() {
 		this.isPlaying = false;
 		this.playSound("death");
+		var playerAnim = this.el.find('.Player').addClass('Player-dead');
 
-		// Should be refactored into a Scoreboard class.
 		var that = this;
 		var scoreboardEl = this.el.find('.Scoreboard');
 		scoreboardEl
@@ -94,6 +94,7 @@ window.Game = (function() {
 			.find('.Scoreboard-restart')
 				.one('click', function() {
 					scoreboardEl.removeClass('is-visible');
+					playerAnim.removeClass('Player-dead');
 					that.start();
 				});
 	};
