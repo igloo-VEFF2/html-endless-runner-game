@@ -13,14 +13,30 @@ window.Ground = (function() {
     };
 
     Ground.prototype.reset = function() {
-        this.pos.x = 0;
-        this.pox.y = 0;
+        this.posX = 0;
     };
 
     Ground.prototype.onFrame = function(delta) {
-        this.pos.x -= delta * SPEED;
+        //this.posX -= delta * SPEED + 3.7;
+        this.posX -= (delta * 100)/2;
 
-        this.el.css('transform', 'translate(' + this.pos.x + 'em, 0 em)');
+        this.el.css('transform', 'translate(' + this.posX + 'em, 0em');
+        this.reset();
+        //var id = setInterval(frame, delta);
+        /*function frame() {
+            if (this.posX === -37)
+            {
+                clearInterval(id);
+            }
+            else {
+                posX--;
+                this.el.css('left', + this.posX + 'em');
+            }
+
+        }*/
+        //this.pos.x -= delta * SPEED;
+
+        //this.el.css('transform', 'translate(' + this.pos.x + 'em, 0 em)');
 
         //this.el.css('transform', 'translateX(' + this.pos.x + 'em)');
         //this.el.css('animation', 'groundmove ' + delta*30 + 's linear infinite');

@@ -19,6 +19,7 @@ window.Game = (function() {
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.pipeTop = new window.Pipes(this.el.find('.PipeTop'), this);
 		this.pipeBottom = new window.Pipes(this.el.find('.PipeBottom'), this);
+		this.ground = new window.Ground(this.el.find('.Ground'), this);
 		this.isPlaying = false;
 		this.muteImg = this.el.find('.Mute');
 
@@ -60,6 +61,7 @@ window.Game = (function() {
 		this.player.onFrame(delta);
 		this.pipeTop.onFrame(delta);
 		this.pipeBottom.onFrame(delta);
+		this.ground.onFrame(delta);
 
 		// Request next frame.
 		window.requestAnimationFrame(this.onFrame);
@@ -84,6 +86,7 @@ window.Game = (function() {
 		this.player.reset();
 		this.pipeTop.reset();
 		this.pipeBottom.reset();
+		this.ground.reset();
 	};
 
 	/**
