@@ -11,18 +11,28 @@ window.Game = (function() {
 	var flapSound = new sound("../assets/flapSound.mp3");
 	var scoreSound = new sound("../assets/scoreSound.mp3");
 	var deathSound = new sound("../assets/deathSound.mp3");
+	var isMuted = false;
 
 	var Game = function(el) {
 		this.el = el;
 		this.player = new window.Player(this.el.find('.Player'), this);
 		this.pipeTop = new window.Pipes(this.el.find('.PipeTop'), this);
 		this.pipeBottom = new window.Pipes(this.el.find('.PipeBottom'), this);
-
 		this.isPlaying = false;
+		this.muteImg = this.el.find('.Mute');
 
 		// Cache a bound onFrame since we need it each frame.
 		this.onFrame = this.onFrame.bind(this);
 	};
+
+	document.getElementById("Mute").onclick = function(e) {
+		if(isMuted)
+			document.getElementById("Mute").style.background = "url('../assets/soundOn.png') no-repeat";
+		else
+			document.getElementById("Mute").style.background = "url('../assets/soundOff.png') no-repeat";
+		document.getElementById("Mute").style.backgroundSize = "50px 50px";
+		isMuted = !isMuted;
+	}
 
 	/**
 	 * Runs every frame. Calculates a delta and allows each game
@@ -89,12 +99,15 @@ window.Game = (function() {
 	};
 
 	Game.prototype.playSound = function(src) {
-		if(src === "flap")
-			flapSound.play();
-		if(src === "score")
-			scoreSound.play();
-		if(src === "death")
-			deathSound.play();
+		if(!isMuted)
+		{
+			if(src === "flap")
+				flapSound.play();
+			if(src === "score")
+				scoreSound.play();
+			if(src === "death")
+				deathSound.play();
+		}
 	};
 
 	function sound(src) {
