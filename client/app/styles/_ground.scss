@@ -6,4 +6,18 @@
     height: em(100px);
 
     background: url(../assets/ground.png);
+
+    //transform: translateX(em(-37px));
+
+    //animation: groundmove 1s linear infinite;
+    //-webkit-animation: groundmove 1s linear infinite;
+
+    /*@keyframes groundmove {
+        from {
+            left: 0;
+        }
+        to {
+            left: em(-37px);
+        }
+    }*/
 }
