@@ -34,6 +34,7 @@ window.Player = (function() {
 	Player.prototype.onFrame = function(delta) {
 
 		fallSpeed += 0.02;									//Increases falling speed with each passed frame
+		//this.el.css('transform', 'rotate3d(0,0,0)');
 
 		if(Controls._didJump)
 		{
@@ -41,6 +42,7 @@ window.Player = (function() {
 			fallSpeed = 0;
 			this.game.playSound("flap");
 			Controls._didJump = false;						//Checks if bird jumped
+			//this.el.css('transform', 'rotate3d(0,35deg,0)');
 		}
 		else									
 			this.pos.y += delta * SPEED * fallSpeed;				//Moves player down if key up is not pressed
@@ -51,7 +53,7 @@ window.Player = (function() {
 		document.querySelector('.Score').innerHTML = this.score;	//Updates the score in html
 
 		// Update UI
-		this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');
+		this.el.css('transform', 'translate3d(' + this.pos.x + 'em, ' + this.pos.y + 'em, 0em)');
 	};
 
 	Player.prototype.checkCollisionWithBounds = function() {

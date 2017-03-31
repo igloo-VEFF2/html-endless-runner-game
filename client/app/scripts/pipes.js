@@ -36,8 +36,8 @@ window.Pipes = (function() {
 		this.checkIfOutOfBounds();
 
 		// Update UI
-		this.el.css('transform', 'translate(' + this.pos.x + 'em, ' + this.pos.y + 'em)');			//Pipes movement
-		this.gap.css('transform', 'translate(' + this.gap.pos.x + 'em, ' + this.gap.pos.y + 'em)');	//Gap movement
+		this.el.css('transform', 'translate3d(' + this.pos.x + 'em, ' + this.pos.y + 'em, 0em)');			//Pipes movement
+		this.gap.css('transform', 'translate3d(' + this.gap.pos.x + 'em, ' + this.gap.pos.y + 'em, 0em)');	//Gap movement
 	};
 
 	Pipes.prototype.checkIfOutOfBounds = function() {

@@ -14,10 +14,10 @@
 
     @keyframes groundmove {
         from {
-            left: 0;
+            transform: translate3d(0,0,0);
         }
         to {
-            left: em(-37px);
+            transform: translate3d(em(-37px),0,0);
         }
     }
 }
