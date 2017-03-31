@@ -5,10 +5,19 @@
     position: absolute;
     width: em(50px);
     height: em(50px);
+
+    
+
+}
+
+.Player-image {
+    position: absolute;
+    width: em(50px);
+    height: em(50px);
     background-image: url(../assets/flappybird.png);
     background-size: 150px 50px;
     animation: Player .25s steps(3) infinite;
-
+    //animation: Player .25s linear infinite;
 }
 
 .Player-dead {
@@ -16,7 +25,17 @@
 }
 
 @keyframes Player {
+    /*0% {
+        transform: translate3d(0,0,0);
+    }
+    33% {
+        transform: translate3d(em(-50px),0,0);
+    }
+    66% {
+        transform: translate3d(em(-100px),0,0);
+    }*/
  100% {
     background-position: -150px;
+    //transform: translate3d(em(-150px),0,0);
  }
 }
